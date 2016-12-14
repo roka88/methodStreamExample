@@ -3,11 +3,14 @@ package com.roka.rokamethodstreamtest;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.roka.rokamethodstream.RokaMethodStream;
+
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -20,7 +23,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         _InitUi();
-        RokaMethodStream.init().attach(mUpdateData, "mainViewUpdate");
+        RokaMethodStream.init().attach(mUpdateData, "mainViewUpdate").attach(mTestLog, "testLog");
     }
 
     private void _InitUi() {
@@ -33,6 +36,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (obj instanceof String) {
             mDataTv.setText((String)obj);
         }
+    };
+
+    RokaMethodStream.Func mTestLog = (Object obj) -> {
+        Toast.makeText(this, (String)obj, Toast.LENGTH_LONG).show();
+        Log.e("테스트", "테스트");
     };
 
     @Override

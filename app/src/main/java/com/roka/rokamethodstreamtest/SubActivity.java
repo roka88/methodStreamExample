@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.roka.rokamethodstream.RokaMethodStream;
 
+
 public class SubActivity extends AppCompatActivity implements View.OnClickListener{
 
     private Button mBtn;
@@ -48,7 +49,7 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.activity_sub_btn:
-                RokaMethodStream.init().run(null, "subViewUpdate").run(mEditTv.getText().toString(), "mainViewUpdate");
+                RokaMethodStream.init().run(null, "subViewUpdate").run(mEditTv.getText().toString(), "mainViewUpdate").run(mEditTv.getText().toString(), "testLog");
                 Toast.makeText(this, "1번뷰와 2번뷰가 변경되었습니다.", Toast.LENGTH_SHORT).show();
                 break;
         }
